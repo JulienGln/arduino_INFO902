@@ -79,9 +79,9 @@ void sendMsg(long dist) {
   displayMsg("Distance : " + String(dist) + "cm");
 
   // Déconnexion puis reconnexion au bout de quelques secondes
-  BLE.disconnect();
+  BLE.end();
   delay(9000);
-  BLE.advertise();
+  setup();
 }
 
 

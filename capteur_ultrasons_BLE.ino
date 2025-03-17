@@ -8,7 +8,7 @@
 const int PIN_ULTRASONS = 7;
 
 Ultrasonic ultrasonic(PIN_ULTRASONS);
-rgb_lcd lcd;
+// rgb_lcd lcd;
 
 
 char bleName[] = "BLE_ultrasonic";
@@ -19,7 +19,7 @@ BLEService myService(MY_UUID("0000"));
 BLEByteCharacteristic firstChar(MY_UUID("0001"), BLERead | BLEWrite | BLENotify);
 
 void setup() {
-  lcd.begin(16, 2);
+  // lcd.begin(16, 2);
   pinMode(LED_BUILTIN, OUTPUT);
 
   if (!BLE.begin()) {
@@ -128,8 +128,9 @@ void characteristicUpdated(BLEDevice central, BLECharacteristic thisChar) {
 
 
 void displayMessage(String message) {
+  return;
   // Efface l'écran
-  lcd.clear();
+  // lcd.clear();
 
   // Si le message est trop long, divise-le en deux lignes
   if (message.length() > 16) {
@@ -142,17 +143,17 @@ void displayMessage(String message) {
 
     // Affiche la première partie du message sur la première ligne
     String firstLine = message.substring(0, splitIndex);
-    lcd.setCursor(0, 0);
-    lcd.print(firstLine);
+    // lcd.setCursor(0, 0);
+    // lcd.print(firstLine);
 
     // Affiche la deuxième partie du message sur la deuxième ligne
     String secondLine = message.substring(splitIndex + 1);
-    lcd.setCursor(0, 1);
-    lcd.print(secondLine);
+    // lcd.setCursor(0, 1);
+    // lcd.print(secondLine);
   } else {
     // Si le message tient sur une seule ligne, affiche-le sur la première ligne
-    lcd.setCursor(0, 0);
-    lcd.print(message);
+    // lcd.setCursor(0, 0);
+    // lcd.print(message);
   }
 }
 
